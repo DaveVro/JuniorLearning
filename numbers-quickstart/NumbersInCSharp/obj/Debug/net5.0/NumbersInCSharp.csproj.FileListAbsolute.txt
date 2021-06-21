@@ -1,0 +1,16 @@
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\bin\Debug\net5.0\NumbersInCSharp.exe
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\bin\Debug\net5.0\NumbersInCSharp.deps.json
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\bin\Debug\net5.0\NumbersInCSharp.runtimeconfig.json
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\bin\Debug\net5.0\NumbersInCSharp.runtimeconfig.dev.json
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\bin\Debug\net5.0\NumbersInCSharp.dll
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\bin\Debug\net5.0\ref\NumbersInCSharp.dll
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\bin\Debug\net5.0\NumbersInCSharp.pdb
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.csproj.AssemblyReference.cache
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.AssemblyInfoInputs.cache
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.AssemblyInfo.cs
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.csproj.CoreCompileInputs.cache
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.dll
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\ref\NumbersInCSharp.dll
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.pdb
+C:\s\DaveVro\JuniorLearning\numbers-quickstart\NumbersInCSharp\obj\Debug\net5.0\NumbersInCSharp.genruntimeconfig.cache
