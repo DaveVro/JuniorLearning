@@ -1,5 +1,4 @@
 ﻿using System;
-//using System.Math;
 
 WorkWithIntegers();
 OrderPrecedence();
@@ -8,6 +7,9 @@ WorkWithDoubles();
 WorkWithDecimals();
 AreaOfCircle();
 
+/// <summary>
+/// Method to demonstrate simple maths equations
+/// </summary>
 void WorkWithIntegers()
 {
     Console.WriteLine("---WorkWithIntegers---");
@@ -30,6 +32,9 @@ void WorkWithIntegers()
     Console.WriteLine(c);
 }
 
+/// <summary>
+/// Method to demonstrate the order precedence for different mathematical operations
+/// </summary>
 void OrderPrecedence()
 {
     Console.WriteLine("---OrderPrecedence---");
@@ -52,6 +57,9 @@ void OrderPrecedence()
     Console.WriteLine(h);
 }
 
+/// <summary>
+/// Method to demonstrate integer precision and limits
+/// </summary>
 void TestLimits()
 {
     Console.WriteLine("---TestLimits---");
@@ -71,6 +79,9 @@ void TestLimits()
     Console.WriteLine($"An example of overflow: {what}");
 }
 
+/// <summary>
+/// Method to demonstrate double type precision and limits
+/// </summary>
 void WorkWithDoubles()
 {
     Console.WriteLine("---WorkWithDoubles---");
@@ -94,6 +105,9 @@ void WorkWithDoubles()
     Console.WriteLine(third);
 }
 
+/// <summary>
+/// Method to demonstrate decimal types precision and limits
+/// </summary>
 void WorkWithDecimals()
 {
     Console.WriteLine("---WorkWithDecimals---");
@@ -110,6 +124,9 @@ void WorkWithDecimals()
     Console.WriteLine(c / d);
 }
 
+/// <summary>
+/// Method to demonstrate the use of Math.PI constant
+/// </summary>
 void AreaOfCircle()
 {
     Console.WriteLine("---AreaOfCircle---");
