@@ -5,7 +5,7 @@ namespace classes
     class Program
     {
         /// <summary>
-        /// This is the main method of the program, used to initialize a bank account and test transactions
+        /// This is the Entry Point of the program, used to initialize a bank account and test transactions
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)

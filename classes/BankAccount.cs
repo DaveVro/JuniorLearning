@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace classes
 {
+    /// <summary>
+    /// Maintains BankAccount, with creating a new instance, making deposits and withdrawals, and viewing the list of transactions
+    /// </summary>
     public class BankAccount
     {
         private List<Transaction> allTransactions = new List<Transaction>();
@@ -25,7 +28,7 @@ namespace classes
         }
 
         /// <summary>
-        /// This constructor is used to open a new bank account
+        /// This constructor is used to create a new instance of BankAccount
         /// </summary>
         /// <param name="name"></param> Account owner
         /// <param name="initialBalance"></param> Starting balance
