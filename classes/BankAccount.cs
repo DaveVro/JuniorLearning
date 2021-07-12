@@ -27,17 +27,33 @@ namespace classes
             }
         }
 
+        public readonly decimal minimumBalance;
+
+        /// <summary>
+        /// Creates a new instance of BankAccount for non-credit accounts
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="initialBalance"></param>
+        public BankAccount(string name, decimal initialBalance) : this(name, initialBalance, 0)
+        {
+        }
+
         /// <summary>
         /// This constructor is used to create a new instance of BankAccount
         /// </summary>
         /// <param name="name"></param> Account owner
         /// <param name="initialBalance"></param> Starting balance
-        public BankAccount(string name, decimal initialBalance)
+        /// <param name="minimumBalance"></param> Minimum balance for credit accounts
+        public BankAccount(string name, decimal initialBalance, decimal minimumBalance)
         {
             this.Number = accountNumberSeed.ToString();
             accountNumberSeed++;
+
             this.Owner = name;
-            MakeDeposit(initialBalance, DateTime.Now, "Initial balance");
+            this.minimumBalance = minimumBalance;
+
+            if (initialBalance > 0)
+                MakeDeposit(initialBalance, DateTime.Now, "Initial balance");
         }
 
         /// <summary>
@@ -70,13 +86,30 @@ namespace classes
                 throw new ArgumentOutOfRangeException(nameof(amount), "Amount of withdrawal must be positive.");
             }
 
-            if (Balance - amount < 0)
-            {
-                throw new InvalidOperationException("Insufficient funds for this withdrawal.");
-            }
-
+            var overdraftTransaction = CheckWithdrawalLimit(Balance - amount < minimumBalance);
             var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
+            if (overdraftTransaction != null)
+            {
+                allTransactions.Add(overdraftTransaction);
+            }
+        }
+
+        /// <summary>
+        /// Checks over drawn status of the account during withdrawals
+        /// </summary>
+        /// <param name="isOverdrawn"></param>
+        /// <returns></returns>
+        protected virtual Transaction? CheckWithdrawalLimit(bool isOverdrawn)
+        {
+            if (isOverdrawn)
+            {
+                throw new InvalidOperationException("Insufficient funds for this withdrawal");
+            }
+            else
+            {
+                return default;
+            }
         }
 
         /// <summary>
@@ -97,6 +130,13 @@ namespace classes
             }
 
             return report.ToString();
+        }
+
+        /// <summary>
+        /// Base method for month end transactions
+        /// </summary>
+        public virtual void PerformMonthEndTransactions()
+        {
         }
     }
 }
