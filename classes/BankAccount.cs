@@ -32,8 +32,8 @@ namespace classes
         /// <summary>
         /// Creates a new instance of BankAccount for non-credit accounts
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="initialBalance"></param>
+        /// <param name="name">Account owner</param>
+        /// <param name="initialBalance">Starting balance</param>
         public BankAccount(string name, decimal initialBalance) : this(name, initialBalance, 0)
         {
         }
@@ -41,9 +41,9 @@ namespace classes
         /// <summary>
         /// This constructor is used to create a new instance of BankAccount
         /// </summary>
-        /// <param name="name"></param> Account owner
-        /// <param name="initialBalance"></param> Starting balance
-        /// <param name="minimumBalance"></param> Minimum balance for credit accounts
+        /// <param name="name">Account owner</param>
+        /// <param name="initialBalance">Starting balance</param>
+        /// <param name="minimumBalance">Minimum balance for credit accounts</param>
         public BankAccount(string name, decimal initialBalance, decimal minimumBalance)
         {
             this.Number = accountNumberSeed.ToString();
@@ -59,9 +59,9 @@ namespace classes
         /// <summary>
         /// This method is used to make bank deposits
         /// </summary>
-        /// <param name="amount"></param> Amount being deposited
-        /// <param name="date"></param> Date of deposit
-        /// <param name="note"></param> Any notes regarding the deposit
+        /// <param name="amount">Amount being deposited</param>
+        /// <param name="date">Date of deposit</param>
+        /// <param name="note">Any notes regarding the deposit</param>
         public void MakeDeposit(decimal amount, DateTime date, string note)
         {
             if (amount <= 0)
@@ -76,9 +76,9 @@ namespace classes
         /// <summary>
         /// This method is used to make bank withdrawals
         /// </summary>
-        /// <param name="amount"></param> Amount being withdrawn
-        /// <param name="date"></param> Date of withdrawal
-        /// <param name="note"></param> Any notes regarding the withdrawal
+        /// <param name="amount">Amount being withdrawn</param>
+        /// <param name="date">Date of withdrawal</param>
+        /// <param name="note">Any notes regarding the withdrawal</param>
         public void MakeWithdrawal(decimal amount, DateTime date, string note)
         {
             if (amount <= 0)
@@ -98,7 +98,7 @@ namespace classes
         /// <summary>
         /// Checks over drawn status of the account during withdrawals
         /// </summary>
-        /// <param name="isOverdrawn"></param>
+        /// <param name="isOverdrawn">Declines the transaction if overdrawn</param>
         /// <returns></returns>
         protected virtual Transaction? CheckWithdrawalLimit(bool isOverdrawn)
         {

@@ -14,9 +14,9 @@ namespace classes
         /// <summary>
         /// Creates a new instance of Transaction
         /// </summary>
-        /// <param name="amount"></param>
-        /// <param name="date"></param>
-        /// <param name="note"></param>
+        /// <param name="amount">Value of transaction</param>
+        /// <param name="date">Date of transaction</param>
+        /// <param name="note">Reason for transaction</param>
         public Transaction(decimal amount, DateTime date, string note)
         {
             this.Amount = amount;

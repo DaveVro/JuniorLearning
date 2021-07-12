@@ -1,18 +1,18 @@
-﻿                                                                         using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace classes
 {
+    /// <summary>
+    /// Savings account type derived from BankAccount
+    /// - Adds a monthly interest deposit on a positive balance of 500 or more
+    /// </summary>
     public class InterestEarningAccount : BankAccount
     {
         /// <summary>
         /// Creates a new account instance of an interest earning account
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="initialBalance"></param>
+        /// <param name="name">Account owner</param>
+        /// <param name="initialBalance">Starting balance</param>
         public InterestEarningAccount(string name, decimal initialBalance) : base(name, initialBalance)
         {
         }
