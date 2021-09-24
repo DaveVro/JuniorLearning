@@ -1,0 +1,40 @@
+﻿@page "/products"
+@layout MainLayout
+@inherits RadzenDemo.Pages.ProductsComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using RadzenDemo.Models.Sample
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Products">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getProductsResult" TItem="RadzenDemo.Models.Sample.Product" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Product" Property="Id" Title="Id">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Product" Property="ProductName" Title="Product Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Product" Property="ProductPrice" FormatString="{0:C}" Title="Product Price">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Product" Property="ProductPicture" Title="Product Picture" Sortable="false" Filterable="false">
+              <Template Context="data">
+              <img src="@data.ProductPicture" width="50%" height="50%" />
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Product" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="radzenDemoModelsSampleProduct">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, radzenDemoModelsSampleProduct))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>
