@@ -1,0 +1,70 @@
+﻿@page "/tasks"
+@layout MainLayout
+@inherits RadzenCrm.Pages.TasksComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using RadzenCrm.Models.Crm
+@using Microsoft.AspNetCore.Identity;
+@using RadzenCrm.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Tasks">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTasksResult" FilterMode="FilterMode.Advanced" TItem="RadzenCrm.Models.Crm.Task" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="RadzenCrm.Models.Crm.Task" Property="Id" Title="Id">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenCrm.Models.Crm.Task" Property="Title" Title="Title">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenCrm.Models.Crm.Task" FilterProperty="Opportunity.Name" GroupProperty="Opportunity.Name" Property="OpportunityId" SortProperty="Opportunity.Name" Title="Opportunity">
+              <Template Context="data">
+              @(data.Opportunity?.Name)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenCrm.Models.Crm.Task" FormatString="{0:MM/dd/yyyy}" Property="DueDate" Title="Due Date">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenCrm.Models.Crm.Task" FilterProperty="TaskType.Name" GroupProperty="TaskType.Name" Property="TypeId" SortProperty="TaskType.Name" Title="Task Type">
+              <Template Context="radzenCrmModelsCrmTask">
+                <RadzenLabel Text="@($"{(radzenCrmModelsCrmTask.TaskType.Name)}")">
+                </RadzenLabel>
+                <RadzenIcon Icon="settings_phone" style="vertical-align: middle" Visible="@(radzenCrmModelsCrmTask.TaskType.Name == "Call")">
+                </RadzenIcon>
+                <RadzenIcon Icon="video_call" style="vertical-align: middle" Visible="@(radzenCrmModelsCrmTask.TaskType.Name == "Online")">
+                </RadzenIcon>
+                <RadzenIcon Icon="mail" style="vertical-align: middle" Visible="@(radzenCrmModelsCrmTask.TaskType.Name == "Email")">
+                </RadzenIcon>
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenCrm.Models.Crm.Task" FilterProperty="TaskStatus.Name" GroupProperty="TaskStatus.Name" Property="StatusId" SortProperty="TaskStatus.Name" Title="Task Status">
+              <Template Context="radzenCrmModelsCrmTask">
+                <RadzenLabel Text="@($"{(radzenCrmModelsCrmTask.TaskStatus.Name)}")">
+                </RadzenLabel>
+                <RadzenIcon Icon="check_circle_outline" style="vertical-align: middle" Visible="@(radzenCrmModelsCrmTask.TaskStatus.Name == "Name")">
+                </RadzenIcon>
+                <RadzenIcon Icon="cancel" style="vertical-align: middle" Visible="@(radzenCrmModelsCrmTask.TaskStatus.Name == "Not Started")">
+                </RadzenIcon>
+                <RadzenIcon Icon="autorenew" style="vertical-align: middle" Visible="@(radzenCrmModelsCrmTask.TaskStatus.Name == "In Progress")">
+                </RadzenIcon>
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenCrm.Models.Crm.Task" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
+              <Template Context="radzenCrmModelsCrmTask">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, radzenCrmModelsCrmTask))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

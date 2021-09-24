@@ -1,0 +1,43 @@
+﻿@page "/order-details"
+@layout MainLayout
+@inherits RadzenDemo.Pages.OrderDetailsComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using RadzenDemo.Models.Sample
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Order Details">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getOrderDetailsResult" TItem="RadzenDemo.Models.Sample.OrderDetail" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.OrderDetail" Property="Id" Title="Id">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.OrderDetail" Property="Quantity" Title="Quantity">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.OrderDetail" Property="OrderId" SortProperty="Order.UserName" GroupProperty="Order.UserName" FilterProperty="Order.UserName" Title="Order">
+              <Template Context="data">
+              @(data.Order?.UserName)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.OrderDetail" Property="ProductId" SortProperty="Product.ProductName" GroupProperty="Product.ProductName" FilterProperty="Product.ProductName" Title="Product">
+              <Template Context="data">
+              @(data.Product?.ProductName)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.OrderDetail" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="radzenDemoModelsSampleOrderDetail">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, radzenDemoModelsSampleOrderDetail))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

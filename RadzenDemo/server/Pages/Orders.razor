@@ -1,0 +1,36 @@
+﻿@page "/"
+@page "/orders"
+@layout MainLayout
+@inherits RadzenDemo.Pages.OrdersComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using RadzenDemo.Models.Sample
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Orders">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getOrdersResult" TItem="RadzenDemo.Models.Sample.Order" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Order" Property="Id" Title="Id">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Order" Property="UserName" Title="User Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Order" Property="OrderDate" FormatString="{0:MM/dd/yyyy}" Title="Order Date">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="RadzenDemo.Models.Sample.Order" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="radzenDemoModelsSampleOrder">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, radzenDemoModelsSampleOrder))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>
